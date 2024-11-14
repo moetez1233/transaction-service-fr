@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Stackwaize Angular 17 pock</h1>
+</mat-toolbar>
+<mat-sidenav-container autosize>
+  <mat-sidenav [opened]="true" mode="side">
+    <a mat-list-item>
+      @for (item of listAction; track item) {
+        <span class="entry" (click)="navigate(item)">
+      <mat-icon>{{ item.icone }}</mat-icon>
+      <span>{{ item.name }}</span>
+    </span>
+      }
+
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content style="margin-top: 2%">
+
+    @if(componentToShow === 'dashbord'){
+      <app-dashbord></app-dashbord>
+    } @else if (componentToShow === 'newTransaction'){
+      <app-add-transaction></app-add-transaction>
+    } @else if (componentToShow === 'listTransaction'){
+      <app-list-transaction></app-list-transaction>
+    } @else {
+      <app-list-users></app-list-users>
+    }
+
+
+    <!--
+    <app-dashbord *ngIf="componentToShow === 'Dashbord'"></app-dashbord>
+    <app-add-transaction *ngIf="componentToShow === 'newTransaction'"></app-add-transaction>
+    <app-list-transaction *ngIf="componentToShow === 'listTransaction'"></app-list-transaction>
+    <app-list-users *ngIf="componentToShow === 'listUsers'"></app-list-users>
+    -->
+<!--
+    @defer(when componentToShow === 'Dashbord'){
+      <app-dashbord></app-dashbord>
+    }
+    -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
