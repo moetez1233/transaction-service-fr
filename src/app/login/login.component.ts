@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {UserConnexionService} from "../services/user-connexion.service";
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,37 @@ import {Router} from "@angular/router";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit{
-  constructor(private fb:FormBuilder,private route:Router) {
+  constructor(private fb:FormBuilder,private route:Router,private userService:UserConnexionService) {
   }
-loginForm!:FormGroup
+loginForm!:FormGroup;
+  userSigned!:any;
   ngOnInit() {
+    this.userSigned= this.userService.getData();
+
     this.loginForm = this.fb.group({
       email:['',Validators.required],
       password:['',Validators.required]
     })
   }
+  get email(){
+    return this.loginForm.get('email');
+  }
+  get password(){
+    return this.loginForm.get('password');
+  }
 
   login() {
-    console.log(this.loginForm.value)
-    this.route.navigateByUrl('/stackWaze')
+    const userFiltred = this.userSigned.filter((u: { email: string; password: string; }) =>
+      u.email === this.email?.value && u.password === this.password?.value )
+
+    if(userFiltred.length>0){
+      this.route.navigate(['/stackWaze'], {
+        queryParams: { email: this.email?.value, role: userFiltred[0].role },
+      });
+    }
+
+
+
   }
+
 }

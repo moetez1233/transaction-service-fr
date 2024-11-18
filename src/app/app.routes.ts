@@ -6,10 +6,12 @@ import {AddTransactionComponent} from "./add-transaction/add-transaction.compone
 import {ListUsersComponent} from "./list-users/list-users.component";
 import {ListTransactionComponent} from "./list-transaction/list-transaction.component";
 import {HomeComponent} from "./home/home.component";
+import {SingUpComponent} from "./sing-up/sing-up.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'logUp', component: SingUpComponent },
   { path: 'transactions', component: ListTransactionComponent },
   { path: 'addTransaction', component: AddTransactionComponent },
   { path: 'dashbord', component: DashbordComponent },

@@ -3,10 +3,11 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1>Stackwaze Angular 17 pock</h1>
+  <h3 style="text-align: left">{{userConnected()}}</h3>
 </mat-toolbar>
 <mat-sidenav-container autosize>
   <mat-sidenav [opened]="true" mode="side">
-    <a mat-list-item>
+    <a mat-list-item style="cursor: pointer">
       @for (item of sideBareAccess(); track item) {
         <span class="entry" (click)="navigate(item)">
       <mat-icon>{{ item.icone }}</mat-icon>
@@ -16,7 +17,7 @@
 
     </a>
   </mat-sidenav>
-  <mat-sidenav-content style="margin-top: 2%">
+  <mat-sidenav-content style="margin-top: 2% ;margin-left: 200px;margin-right: 2%">
 
     @if(componentToShow === 'dashbord'){
       <app-dashbord></app-dashbord>

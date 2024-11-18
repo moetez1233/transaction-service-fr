@@ -31,6 +31,7 @@ import {CommonModule} from "@angular/common";
   styleUrl: './sidebare.component.scss'
 })
 export class SidebareComponent {
+  userConnected= input<String | null>(null);
 
   listAction = input<any>(null);
   sideBareAccess = computed<any>(() => this.listAction())
