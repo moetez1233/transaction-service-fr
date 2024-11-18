@@ -2,12 +2,12 @@
   <button mat-icon-button aria-label="Menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Stackwaize Angular 17 pock</h1>
+  <h1>Stackwaze Angular 17 pock</h1>
 </mat-toolbar>
 <mat-sidenav-container autosize>
   <mat-sidenav [opened]="true" mode="side">
     <a mat-list-item>
-      @for (item of listAction; track item) {
+      @for (item of sideBareAccess; track item) {
         <span class="entry" (click)="navigate(item)">
       <mat-icon>{{ item.icone }}</mat-icon>
       <span>{{ item.name }}</span>

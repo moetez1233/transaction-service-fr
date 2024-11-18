@@ -31,8 +31,11 @@ import {CommonModule} from "@angular/common";
   styleUrl: './sidebare.component.scss'
 })
 export class SidebareComponent {
-@Input() listAction:any
-  componentToShow='Dashbord'
+  sideBareAccess:any;
+@Input() set listAction(listAction :any) {
+  this.sideBareAccess=listAction;
+}
+  componentToShow='dashbord'
 
   navigate(item: any) {
   this.componentToShow = item.value;

@@ -24,6 +24,6 @@ loginForm!:FormGroup
 
   login() {
     console.log(this.loginForm.value)
-    this.route.navigateByUrl('/stackWaize')
+    this.route.navigateByUrl('/stackWaze')
   }
 }

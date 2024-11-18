@@ -14,5 +14,5 @@ export const routes: Routes = [
   { path: 'addTransaction', component: AddTransactionComponent },
   { path: 'dashbord', component: DashbordComponent },
   { path: 'users', component: ListUsersComponent },
-  { path: 'stackWaize', component: HomeComponent }
+  { path: 'stackWaze', component: HomeComponent }
 ];
