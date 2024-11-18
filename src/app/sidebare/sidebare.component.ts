@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, computed, input, Input} from '@angular/core';
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -31,10 +31,11 @@ import {CommonModule} from "@angular/common";
   styleUrl: './sidebare.component.scss'
 })
 export class SidebareComponent {
-  sideBareAccess:any;
-@Input() set listAction(listAction :any) {
-  this.sideBareAccess=listAction;
-}
+
+  listAction = input<any>(null);
+  sideBareAccess = computed<any>(() => this.listAction())
+
+
   componentToShow='dashbord'
 
   navigate(item: any) {

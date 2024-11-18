@@ -7,7 +7,7 @@
 <mat-sidenav-container autosize>
   <mat-sidenav [opened]="true" mode="side">
     <a mat-list-item>
-      @for (item of sideBareAccess; track item) {
+      @for (item of sideBareAccess(); track item) {
         <span class="entry" (click)="navigate(item)">
       <mat-icon>{{ item.icone }}</mat-icon>
       <span>{{ item.name }}</span>
