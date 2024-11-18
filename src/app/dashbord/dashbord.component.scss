@@ -1,0 +1,8 @@
+img{
+  //background-image: url('assets/dash.png');
+  background-size: cover;  /* Makes the image cover the entire page */
+  background-position: center;  /* Centers the image */
+  background-attachment: fixed;  /* Keeps the image fixed while scrolling */
+  margin: 0;  /* Ensures there's no extra margin */
+  padding: 0;  /* Ensures no padding around the body */
+}

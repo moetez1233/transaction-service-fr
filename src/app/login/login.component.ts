@@ -15,6 +15,7 @@ import {UserConnexionService} from "../services/user-connexion.service";
 export class LoginComponent implements OnInit{
   constructor(private fb:FormBuilder,private route:Router,private userService:UserConnexionService) {
   }
+  showAlert:Boolean=false;
 loginForm!:FormGroup;
   userSigned!:any;
   ngOnInit() {
@@ -40,6 +41,8 @@ loginForm!:FormGroup;
       this.route.navigate(['/stackWaze'], {
         queryParams: { email: this.email?.value, role: userFiltred[0].role },
       });
+    }else {
+      this.showAlert=true;
     }
 
 

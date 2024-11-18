@@ -1,4 +1,5 @@
 <div class="login-container">
+
   <div class="login-left">
     <h2>StackWaze</h2>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -9,5 +10,22 @@
       <button type="submit" class="btn btn-signin">Sign In</button>
     </form>
     <p>Don't have an account? <a href="/logUp">Sign Up Now</a></p>
+
+    <!-- alert -->
+
+
+    @if (showAlert){
+      <label>
+        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+        <div class="alert warning">
+          <span class="alertClose" (click)="showAlert=false">X</span>
+          <span class="alertText">We couldn't find your email. Please sign up.
+    <br class="clear"/></span>
+        </div>
+      </label>
+    }
+
+
+    <!-- end alert -->
   </div>
 </div>

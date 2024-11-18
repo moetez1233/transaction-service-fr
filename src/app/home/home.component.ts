@@ -13,7 +13,7 @@ import {UserConnexionService} from "../services/user-connexion.service";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-  constructor(private activatedRoute:ActivatedRoute) {
+  constructor(private activatedRoute:ActivatedRoute,private userService:UserConnexionService) {
   }
   userConnected='';
 
@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit{
     this.activatedRoute.queryParams.subscribe((val) => {
       const roleUserConnected = val['role'];
       this.userConnected = val['email'];
-      console.log(roleUserConnected)
-      console.log(this.userConnected)
+      this.userService.updateRole(roleUserConnected);
       this.sideBarAction =this.sideBarAction.filter((nav:{role:string}) => (nav.role === roleUserConnected || nav.role == 'all'))
 
     })

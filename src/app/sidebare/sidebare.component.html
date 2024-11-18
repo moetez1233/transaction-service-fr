@@ -1,4 +1,5 @@
 <mat-toolbar color="primary">
+
   <button mat-icon-button aria-label="Menu icon">
     <mat-icon>menu</mat-icon>
   </button>
@@ -24,8 +25,11 @@
     } @else if (componentToShow === 'newTransaction'){
       <app-add-transaction></app-add-transaction>
     } @else if (componentToShow === 'listTransaction'){
-      <app-list-transaction></app-list-transaction>
-    } @else {
+      <app-list-transaction (transactionDetail)="getTransDetail($event)"></app-list-transaction>
+    } @else if (componentToShow === 'transDetail'){
+      <app-transaction-details [transaction]="transDetail" (returnFromDetailTransaction)="getRetunrFromDetailsTrans($event)"></app-transaction-details>
+    }
+    @else {
       <app-list-users></app-list-users>
     }
 

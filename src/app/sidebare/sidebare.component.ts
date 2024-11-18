@@ -1,4 +1,4 @@
-import {Component, computed, input, Input} from '@angular/core';
+import {Component, computed, EventEmitter, input, Input, Output} from '@angular/core';
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -11,6 +11,7 @@ import {DashbordComponent} from "../dashbord/dashbord.component";
 import {AddTransactionComponent} from "../add-transaction/add-transaction.component";
 import {ListUsersComponent} from "../list-users/list-users.component";
 import {CommonModule} from "@angular/common";
+import {TransactionDetailsComponent} from "../transaction-details/transaction-details.component";
 
 @Component({
   selector: 'app-sidebare',
@@ -25,13 +26,16 @@ import {CommonModule} from "@angular/common";
     ListTransactionComponent,
     DashbordComponent,
     AddTransactionComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    TransactionDetailsComponent
   ],
   templateUrl: './sidebare.component.html',
   styleUrl: './sidebare.component.scss'
 })
 export class SidebareComponent {
   userConnected= input<String | null>(null);
+  transDetail:any;
+
 
   listAction = input<any>(null);
   sideBareAccess = computed<any>(() => this.listAction())
@@ -43,4 +47,12 @@ export class SidebareComponent {
   this.componentToShow = item.value;
 
   }
+  getTransDetail(element:{}){
+    this.transDetail=element;
+    this.componentToShow = 'transDetail';
+  }
+  getRetunrFromDetailsTrans(elem:Boolean){
+    this.componentToShow = 'listTransaction';
+  }
+
 }
