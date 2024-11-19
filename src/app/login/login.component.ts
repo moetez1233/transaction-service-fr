@@ -38,9 +38,10 @@ loginForm!:FormGroup;
       u.email === this.email?.value && u.password === this.password?.value )
 
     if(userFiltred.length>0){
-      this.route.navigate(['/stackWaze'], {
-        queryParams: { email: this.email?.value, role: userFiltred[0].role },
-      });
+     // this.route.navigate(['stackWaze'], { state: { email: this.email?.value, role: userFiltred[0].role } });
+      sessionStorage.setItem("email",this.email?.value);
+      sessionStorage.setItem("role",userFiltred[0].role)
+      this.route.navigateByUrl("/stackWaze")
     }else {
       this.showAlert=true;
     }

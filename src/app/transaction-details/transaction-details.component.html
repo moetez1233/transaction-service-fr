@@ -1,0 +1,45 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+
+    <div class="example-button-container">
+      <button mat-flat-button (click)="goToListTra()">
+        <mat-icon>keyboard_backspace</mat-icon> List
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="transTitle">
+      <h3>Transaction N° </h3>
+      <h4>{{transaction()?.position}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Name :  </h3>
+      <h4>{{transaction()?.name}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Email : </h3>
+      <h4>{{transaction()?.email}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Phone : </h3>
+      <h4>{{transaction()?.phone}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Account number :</h3>
+      <h4>{{transaction()?.accountNumber}}</h4>
+    </div >
+    <div class="transTitle">
+      <h3>Descritption :  </h3>
+      <h4>{{transaction()?.description}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Transaction type : </h3>
+      <h4>{{transaction()?.transactionType}}</h4>
+    </div>
+    <div class="transTitle">
+      <h3>Date : </h3>
+      <h4>{{transaction()?.timestamp | date:'full'}}</h4>
+    </div>
+  </mat-card-content>
+</mat-card>

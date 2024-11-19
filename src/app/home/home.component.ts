@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SidebareComponent} from "../sidebare/sidebare.component";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserConnexionService} from "../services/user-connexion.service";
 
 @Component({
@@ -13,7 +13,7 @@ import {UserConnexionService} from "../services/user-connexion.service";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-  constructor(private activatedRoute:ActivatedRoute,private userService:UserConnexionService) {
+  constructor(private activatedRoute:ActivatedRoute,private route:Router,private userService:UserConnexionService) {
   }
   userConnected='';
 
@@ -25,12 +25,17 @@ export class HomeComponent implements OnInit{
   ]
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((val) => {
-      const roleUserConnected = val['role'];
-      this.userConnected = val['email'];
-      this.userService.updateRole(roleUserConnected);
+   // const navigation = this.route.getCurrentNavigation();
+ //   const state = navigation?.extras.state;
+    const roleUserConnected = sessionStorage.getItem("role")|| "";
+    this.userConnected = sessionStorage.getItem("email") || "";
+    this.userService.updateRole(roleUserConnected);
+    if(roleUserConnected.length>0){
       this.sideBarAction =this.sideBarAction.filter((nav:{role:string}) => (nav.role === roleUserConnected || nav.role == 'all'))
+    }else {
+      this.sideBarAction = []
+    }
 
-    })
+
   }
 }
